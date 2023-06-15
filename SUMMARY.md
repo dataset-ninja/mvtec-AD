@@ -4,6 +4,6 @@ The dataset consists of 5354 images with 1888 labeled objects belonging to 48 di
 
 Each image in the MVTEC AD dataset has pixel-level semantic segmentation annotations. Due to the nature of the semantic segmentation task, it can be automatically transformed into object detection (bounding boxes for every object) task, bounding boxes annotations. There are 4096 (77% of the total) unlabeled images (i.e. without annotations). There are 15 splits in the dataset: *leather* (369 images), *toothbrush* (102 images), *screw* (480 images), *wood* (326 images), *pill* (434 images), *capsule* (351 images), *metal_nut* (335 images), *grid* (342 images), *tile* (347 images), *bottle* (292 images), *hazelnut* (501 images), *transistor* (313 images), *carpet* (397 images), *zipper* (391 images), and *cable* (374 images). The dataset was released in 2019.
 
-Here are the visualized examples for each of the 48 classes:
+Here is the visualized example grid with annotations:
 
-[Dataset classes](https://github.com/dataset-ninja/mvtec-AD/raw/main/visualizations/classes_preview.webm)
+<img src="https://github.com/dataset-ninja/mvtec-AD/raw/main/visualizations/poster.png">

@@ -20,7 +20,6 @@ CV_TASKS: List[CVTask] = [
 ]
 ANNOTATION_TYPES: List[AnnotationType] = [
     AnnotationType.SemanticSegmentation(),
-    AnnotationType.ObjectDetection(),
 ]
 
 RELEASE_YEAR: int = 2019
