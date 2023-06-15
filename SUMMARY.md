@@ -1,0 +1,9 @@
+**The MVTEC Anomaly Detection Dataset** is a dataset for semantic segmentation, instance segmentation, and object detection tasks. It is used in the industrial industry.
+
+The dataset consists of 5354 images with 1888 labeled objects belonging to 48 different classes including *color*, *scratch*, *crack*, and other: *combined*, *cut*, *hole*, *contamination*, *faulty_imprint*, *poke*, *bent*, *rough*, *thread*, *glue*, *defective*, *metal_contamination*, *scratch_neck*, *manipulated_front*, *scratch_head*, *flip*, *thread_top*, *thread_side*, *broken_small*, *broken_large*, *squeeze*, *broken_teeth*, *split_teeth*, *glue_strip*, *oil*, *fabric_border*, *print*, *fold*, *squeezed_teeth*, *fabric_interior*, *gray_stroke*, *cut_inner_insulation*, *bent_wire*, *cable_swap*, *missing_cable*, *broken*, *poke_insulation*, *cut_outer_insulation*, *missing_wire*, *bent_lead*, *damaged_case*, *cut_lead*, *misplaced*, *liquid*, and *pill_type*.
+
+Each image in the MVTEC AD dataset has pixel-level semantic segmentation annotations. Due to the nature of the semantic segmentation task, it can be automatically transformed into object detection (bounding boxes for every object) task, bounding boxes annotations. There are 4096 (77% of the total) unlabeled images (i.e. without annotations). There are 15 splits in the dataset: *leather* (369 images), *toothbrush* (102 images), *screw* (480 images), *wood* (326 images), *pill* (434 images), *capsule* (351 images), *metal_nut* (335 images), *grid* (342 images), *tile* (347 images), *bottle* (292 images), *hazelnut* (501 images), *transistor* (313 images), *carpet* (397 images), *zipper* (391 images), and *cable* (374 images). The dataset was released in 2019.
+
+Here are the visualized examples for each of the 48 classes:
+
+[Dataset classes](https://github.com/dataset-ninja/mvtec-AD/raw/main/visualizations/classes_preview.webm)
