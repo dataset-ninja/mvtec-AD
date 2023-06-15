@@ -24,13 +24,13 @@ ANNOTATION_TYPES: List[AnnotationType] = [
 ]
 
 RELEASE_YEAR: int = 2019
-HOMEPAGE_URL: str = "https://www.mvtec.com/company/research/datasets/mvtec-d2s"
+HOMEPAGE_URL: str = "https://www.mvtec.com/company/research/datasets/mvtec-ad"
 # e.g. "https://some.com/dataset/homepage"
 
-PREVIEW_IMAGE_ID: int = 347893
+PREVIEW_IMAGE_ID: int = 573752
 # This should be filled AFTER uploading images to instance, just ID of any image.
 
-GITHUB_URL: str = "https://github.com/dataset-ninja/mvtec-d2s"
+GITHUB_URL: str = "https://github.com/dataset-ninja/mvtec-AD"
 # URL to GitHub repo on dataset ninja (e.g. "https://github.com/dataset-ninja/some-dataset")
 
 ##################################

@@ -1,12 +1,13 @@
 ###############################################################################
-# ? Set up values if you want to change default values of visualizations
+# ! Set up values if you want to change default values of visualizations
 ###############################################################################
 
+# * Preview class to visualize in SUMMARY.md overview section
 # * Literal["ClassesPreview", "HorizontalGrid", "SideAnnotationsGrid"]
 # * If None, then preview_class will be set automatically to "ClassesPreview"
 PREVIEW_CLASS = None
 
-IS_DETECTION_TASK: bool = False  # ? Set True if you want to visualize only bbox annotations
+IS_DETECTION_TASK: bool = None  # ? Set True if you want to visualize only bbox annotations
 
 ###############################################################
 ####### * Set up visualization params for Poster class ########
@@ -61,8 +62,15 @@ HEATMAP_ROWS: int = None
 HEATMAP_COLS: int = None
 HEATMAP_GRID_SPACING: int = None
 HEATMAP_OUTER_GRID_SPACING: int = None
-HEATMAP_OUTPUT_WIDTH: int = None
+HEATMAP_OUTPUT_WIDTH: int = (
+    None  # 1 class in dataset? -> 1600px for portrait images, 2200px for landscape
+)
 ###############################################################
+
+
+##################################
+###### ? Do not edit bellow #####
+##################################
 
 
 def get_visualization_options():
@@ -85,9 +93,6 @@ def get_visualization_options():
             "rows": SIDE_ANNOTATIONS_GRID_ROWS,
             "cols": SIDE_ANNOTATIONS_GRID_COLS,
             "is_detection_task": SIDE_ANNOTATIONS_GRID_IS_DETECTION_TASK,
-        },
-        "Previews": {
-            "is_detection_task": PREVIEWS_IS_DETECTION_TASK,
         },
     }
 
@@ -117,6 +122,9 @@ def get_stats_options():
             "grid_spacing": HEATMAP_GRID_SPACING,
             "outer_grid_spacing": HEATMAP_OUTER_GRID_SPACING,
             "output_width": HEATMAP_OUTPUT_WIDTH,
+        },
+        "Previews": {
+            "is_detection_task": PREVIEWS_IS_DETECTION_TASK,
         },
     }
 
