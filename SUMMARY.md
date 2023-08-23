@@ -4,4 +4,6 @@ The dataset consists of 5354 images with 1888 labeled objects belonging to 48 di
 
 Images in the MVTec AD dataset have pixel-level semantic segmentation annotations. There are 4096 (77% of the total) unlabeled images (i.e. without annotations). There are 2 splits in the dataset: *test* (1725 images) and *train* (3629 images). Alternatively, the dataset could be split into 15 categories: ***bottle*** (292 images), ***cable*** (374 images), ***capsule*** (351 images), ***carpet*** (397 images), ***grid*** (342 images), ***hazelnut*** (501 images), ***leather*** (369 images), ***metal_nut*** (335 images), ***pill*** (434 images), ***screw*** (480 images), ***tile*** (347 images), ***toothbrush*** (102 images), ***transistor*** (313 images), ***wood*** (326 images), and ***zipper*** (391 images). Additionally, the 4096 ***good*** images with no defects are provided. The dataset was released in 2019 by the MVTec Software GmbH, Germany.
 
-<img src="https://github.com/dataset-ninja/mvtec-AD/raw/main/visualizations/poster.png">
+Here is a visualized example for 25 randomly selected sample classes:
+
+[Dataset classes](https://github.com/dataset-ninja/mvtec-AD/raw/main/visualizations/classes_preview.webm)
