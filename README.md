@@ -1,3 +1,3 @@
-# The MVTEC Anomaly Detection Dataset
+# MVTec AD: the MVTec Anomaly Detection
 
-MVTEC AD is a dataset for semantic segmentation, instance segmentation, and object detection tasks.
+MVTec AD is a dataset for semantic segmentation, classification tasks.
