@@ -13,9 +13,7 @@ def convert_and_upload_supervisely_project(
     dataset_path = "APP_DATA/mvtec_anomaly_detection"
     batch_size = 30
 
-    train_images_pathes = "train/good"
-    test_images_pathes = "test"
-    masks_pathes = "ground_truth"
+    masks_dir = "ground_truth"
     mask_suffix = "_mask"
 
     img_ext = ".png"
@@ -28,7 +26,10 @@ def convert_and_upload_supervisely_project(
         image_np = sly.imaging.image.read(image_path)[:, :, 0]
         img_height = image_np.shape[0]
         img_wight = image_np.shape[1]
-        mask_path = os.path.join(masks_path, defect_class_name, mask_name)
+
+        masks_dirpath = "/".join(image_path.split("/")[:-3])
+        mask_path = os.path.join(masks_dirpath, masks_dir, defect_class_name, mask_name)
+
         if file_exists(mask_path):
             mask_np = sly.imaging.image.read(mask_path)[:, :, 0]
             mask = mask_np == 255
@@ -41,10 +42,31 @@ def convert_and_upload_supervisely_project(
 
         if "good" in image_path:
             tag_names_.append("good")
-        tag_names_.append(image_path.split("/")[-4])
+        category_ = image_path.split("/")[-4]
+
+        tag_names_.append(category_)
+
+        if category_ in ["carpet", "grid"]:
+            tag_names_.append("regular texture")
+        if category_ in ["leather", "tile", "wood"]:
+            tag_names_.append("random texture")
+
+        if category_ in ["bottle", "metal_nut"]:
+            tag_names_.append("rigid object with a fixed appearance")
+
+        if category_ in ["cable"]:
+            tag_names_.append("deformable object")
+
+        if category_ in ["hazelnut"]:
+            tag_names_.append("objects with natural variations")
+
+        if category_ in ["toothbrush", "capsule", "pill"]:
+            tag_names_.append("objects with roughly aligned pose")
+
+        if category_ in ["screw", "metal_nut", "hazelnut"]:
+            tag_names_.append("objects with random rotation")
 
         tags = [sly.Tag(tag_meta) for tag_meta in tag_metas if tag_meta.name in tag_names_]
-
         return sly.Annotation(img_size=(img_height, img_wight), labels=labels, img_tags=tags)
 
     tag_names = [
@@ -64,10 +86,18 @@ def convert_and_upload_supervisely_project(
         "wood",
         "zipper",
         "good",
+        "object",
+        "regular texture",
+        "random texture",
+        "rigid object with a fixed appearance",
+        "deformable object",
+        "objects with natural variations",
+        "objects with roughly aligned pose",
+        "objects with random rotation",
     ]
     tag_metas = [sly.TagMeta(name, sly.TagValueType.NONE) for name in tag_names]
 
-    objects = os.listdir(dataset_path)
+    categories = os.listdir(dataset_path)
     defect_to_obj_class = {}
 
     project = api.project.create(workspace_id, project_name, change_name_if_conflict=True)
@@ -78,7 +108,7 @@ def convert_and_upload_supervisely_project(
         folders = glob.glob(os.path.join(base_directory, f"**/{dir}"), recursive=True)
         file_count = 0
         for folder in folders:
-            file_count += len(glob.glob(os.path.join(folder, "*")))
+            file_count += len(glob.glob(os.path.join(folder, "*", "*")))
         return file_count
 
     for ds_name in ["test", "train"]:
@@ -87,8 +117,8 @@ def convert_and_upload_supervisely_project(
             "Create dataset {}".format(ds_name),
             count_images(dataset_path, ds_name),
         )
-        for curr_object in objects:
-            ds_path = os.path.join(dataset_path, curr_object, ds_name)
+        for category in categories:
+            ds_path = os.path.join(dataset_path, category, ds_name)
             if dir_exists(ds_path):
                 for defect_class_name in os.listdir(ds_path):
                     if (
@@ -109,7 +139,7 @@ def convert_and_upload_supervisely_project(
                         ]
 
                         new_img_names_batch = [
-                            curr_object + "_" + defect_class_name + "_" + image_name
+                            category + "_" + defect_class_name + "_" + image_name
                             for image_name in img_names_batch
                         ]
 

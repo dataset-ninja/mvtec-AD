@@ -14,25 +14,21 @@ from dataset_tools.templates import (
 # * Before uploading to instance #
 ##################################
 PROJECT_NAME: str = "MVTec AD"
-PROJECT_NAME_FULL: Optional[str] = "The MVTec Anomaly Detection Dataset"
+PROJECT_NAME_FULL: Optional[str] = "MVTec AD: the MVTec Anomaly Detection"
+HIDE_DATASET = False  # set False when 100% sure about repo quality
 
 ##################################
 # * After uploading to instance ##
 ##################################
 LICENSE: License = License.BY_NC_SA_4_0()
 APPLICATIONS: List[Union[Industry, Domain, Research]] = [
-    Domain.Industrial(),
+    Domain.Industrial(is_used=False),
     Research.AnomalyDetection(),
 ]
-CATEGORY: Category = Category.Benchmark()
+CATEGORY: Category = Category.Manufacturing()
 
-CV_TASKS: List[CVTask] = [
-    CVTask.SemanticSegmentation(),
-    CVTask.ObjectDetection(),
-]
-ANNOTATION_TYPES: List[AnnotationType] = [
-    AnnotationType.SemanticSegmentation(),
-]
+CV_TASKS: List[CVTask] = [CVTask.SemanticSegmentation(), CVTask.Classification()]
+ANNOTATION_TYPES: List[AnnotationType] = [AnnotationType.SemanticSegmentation()]
 
 RELEASE_DATE: Optional[str] = "2019-06-20"  # e.g. "YYYY-MM-DD"
 if RELEASE_DATE is None:
@@ -40,7 +36,7 @@ if RELEASE_DATE is None:
 HOMEPAGE_URL: str = "https://www.mvtec.com/company/research/datasets/mvtec-ad"
 # e.g. "https://some.com/dataset/homepage"
 
-PREVIEW_IMAGE_ID: int = 573752
+PREVIEW_IMAGE_ID: int = 2340907
 # This should be filled AFTER uploading images to instance, just ID of any image.
 
 GITHUB_URL: str = "https://github.com/dataset-ninja/mvtec-AD"
@@ -57,8 +53,11 @@ DOWNLOAD_ORIGINAL_URL: Optional[
 CLASS2COLOR: Optional[Dict[str, List[str]]] = None
 # If specific colors for classes are needed, fill this dict (e.g. {"class1": [255, 0, 0], "class2": [0, 255, 0]})
 
-PAPER: Optional[str] = "https://link.springer.com/article/10.1007/s11263-020-01400-4"
-CITATION_URL: Optional[str] = "https://link.springer.com/article/10.1007/s11263-020-01400-4#citeas"
+PAPER: Optional[str] = [
+    "https://link.springer.com/article/10.1007/s11263-020-01400-4",
+    "https://www.mvtec.com/fileadmin/Redaktion/mvtec.com/company/research/datasets/mvtec_ad.pdf",
+]
+CITATION_URL: Optional[str] = "https://www.mvtec.com/company/research/datasets/mvtec-ad"
 AUTHORS: Optional[List[str]] = [
     "Paul Bergmann",
     "Kilian Batzner",
@@ -69,7 +68,26 @@ AUTHORS: Optional[List[str]] = [
 
 ORGANIZATION_NAME: Optional[Union[str, List[str]]] = "MVTec Software GmbH, Germany"
 ORGANIZATION_URL: Optional[Union[str, List[str]]] = "http://www.mvtec.com/"
-SLYTAGSPLIT: Optional[Dict[str, List[str]]] = None
+SLYTAGSPLIT: Optional[Dict[str, List[str]]] = {
+    "categories": [
+        "bottle",
+        "cable",
+        "capsule",
+        "carpet",
+        "grid",
+        "hazelnut",
+        "leather",
+        "metal_nut",
+        "pill",
+        "screw",
+        "tile",
+        "toothbrush",
+        "transistor",
+        "wood",
+        "zipper",
+    ],
+    "__POSTTEXT__": "Additionally, the 4096 ***good*** images with no defects are provided",
+}
 TAGS: List[str] = None
 
 ##################################
@@ -91,6 +109,7 @@ def get_settings():
     settings = {
         "project_name": PROJECT_NAME,
         "license": LICENSE,
+        "hide_dataset": HIDE_DATASET,
         "applications": APPLICATIONS,
         "category": CATEGORY,
         "cv_tasks": CV_TASKS,
