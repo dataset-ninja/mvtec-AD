@@ -27,8 +27,8 @@ APPLICATIONS: List[Union[Industry, Domain, Research]] = [
 ]
 CATEGORY: Category = Category.Manufacturing()
 
-CV_TASKS: List[CVTask] = [CVTask.SemanticSegmentation(), CVTask.Classification()]
-ANNOTATION_TYPES: List[AnnotationType] = [AnnotationType.SemanticSegmentation()]
+CV_TASKS: List[CVTask] = [AnnotationType.InstanceSegmentation(), CVTask.SemanticSegmentation(),AnnotationType.ObjectDetection(), CVTask.Classification()]
+ANNOTATION_TYPES: List[AnnotationType] = [AnnotationType.InstanceSegmentation()]
 
 RELEASE_DATE: Optional[str] = "2019-06-20"  # e.g. "YYYY-MM-DD"
 if RELEASE_DATE is None:
