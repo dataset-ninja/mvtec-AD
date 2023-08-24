@@ -135,7 +135,7 @@ SLYTAGSPLIT: Optional[Dict[str, List[str]]] = {
         "wood",
         "zipper",
     ],
-    "__POSTTEXT__": "Additionally, the 4096 ***good*** images with no defects are provided",
+    "__POSTTEXT__": "Additionally, there are 4096 ***good*** images with no defects are provided for classification purposes",
 }
 TAGS: List[str] = None
 
