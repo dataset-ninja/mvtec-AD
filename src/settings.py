@@ -114,6 +114,8 @@ AUTHORS: Optional[List[str]] = [
     "David Sattlegger",
     "Carsten Steger",
 ]
+AUTHORS_CONTACTS: Optional[List[str]] = ["paul.bergmann@mvtec.com"]
+
 
 ORGANIZATION_NAME: Optional[Union[str, List[str]]] = "MVTec Software GmbH, Germany"
 ORGANIZATION_URL: Optional[Union[str, List[str]]] = "http://www.mvtec.com/"
@@ -181,6 +183,7 @@ def get_settings():
     settings["paper"] = PAPER
     settings["citation_url"] = CITATION_URL
     settings["authors"] = AUTHORS
+    settings["authors_contacts"] = AUTHORS_CONTACTS
     settings["organization_name"] = ORGANIZATION_NAME
     settings["organization_url"] = ORGANIZATION_URL
     settings["slytagsplit"] = SLYTAGSPLIT
