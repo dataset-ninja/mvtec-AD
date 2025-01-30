@@ -1,6 +1,6 @@
 Dataset **MVTec AD** can be downloaded in [Supervisely format](https://developer.supervisely.com/api-references/supervisely-annotation-json-format):
 
- [Download](https://www.dropbox.com/scl/fi/ma9xskbgcvxawgryy2ye6/mvtec-ad-DatasetNinja.tar?rlkey=s3egnm0f901v5gzew8bsvmmcb&dl=1)
+ [Download](https://assets.supervisely.com/remote/eyJsaW5rIjogImZzOi8vYXNzZXRzLzE2NThfTVZUZWMgQUQvbXZ0ZWMtYWQtRGF0YXNldE5pbmphLnRhciIsICJzaWciOiAiYkEvdXd6S3JROWt4ZFlKRnRUVXB0cVVXVGtSa2NQQkJGbHFrWnZtOFI4RT0ifQ==)
 
 As an alternative, it can be downloaded with *dataset-tools* package:
 ``` bash
